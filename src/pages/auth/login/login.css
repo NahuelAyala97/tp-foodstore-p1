@@ -1,0 +1,98 @@
+.login__container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.login {
+  border: solid 1px var(--color-borde);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-fondo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 300px;
+  padding: 10px 10px 20px 10px;
+  gap: 10px;
+}
+
+.login__header {
+  text-align: center;
+  margin: 4px;
+}
+
+.login__title {
+  font-size: 2rem;
+  color: var(--color-primario);
+}
+
+.login__subtitle {
+  color: var(--color-texto);
+  font-size: 1rem;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.login__field {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.login__label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+  font-size: 0.8rem;
+}
+
+.login__input {
+  width: 100%;
+  padding: 10px;
+  border: solid 1px var(--color-borde);
+  border-radius: 4px;
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.25);
+}
+
+.login__signup {
+  font-size: 0.7rem;
+}
+
+.login__signup-text {
+}
+
+.login__signup-link {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.login__signup-link:hover {
+  color: var(--color-focus);
+}
+
+.login__button {
+  width: 100%;
+  padding: 5px;
+  background-color: var(--color-primario);
+  border: solid 1px var(--color-primario);
+  border-radius: 4px;
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.login__button:hover {
+  background-color: var(--color-focus);
+}

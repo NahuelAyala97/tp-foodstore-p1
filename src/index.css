@@ -1,0 +1,25 @@
+:root {
+  --color-primario: #ff6347;
+  --color-fondo: #f7f7f7;
+  --color-texto: #333;
+  --color-blanco: #fff;
+  --color-borde: #dadada;
+  --color-focus: #ff4500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-borde);
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}

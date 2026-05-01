@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/pages/auth/login/login.css" />
+    <link rel="stylesheet" href="/src/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/pages/auth/registro/signup.ts"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="login__container">
+      <div class="login">
+        <div class="login__header">
+          <h1 class="login__title">FOOD STORE</h1>
+          <p class="login__subtitle">Ingrese sus datos</p>
+        </div>
+        <form class="login__form">
+          <div class="login__field">
+            <label class="login__label" for="email">Email:</label>
+            <input
+              id="email"
+              type="email"
+              class="login__input"
+              name="email"
+              placeholder="tucorreo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="login__field">
+            <label class="login__label">Contraseña:</label>
+            <input
+              id="password"
+              type="password"
+              class="login__input"
+              name="password"
+              placeholder="Mínimo 8 caracteres"
+              required
+            />
+          </div>
+          <button type="submit" class="login__button">REGISTRARME</button>
+        </form>
+        <div class="login__signup">
+          <span class="login__signup-text">¿Ya tenés una cuenta?</span
+          ><a href="" class="login__signup-link"> Ingresa acá</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

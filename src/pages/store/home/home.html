@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/index.css" />
+    <link rel="stylesheet" href="home.css" />
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="./home.ts"></script>
+    <title>Food Store | Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header__container-title">
+          <h1 class="header__title">Food Store</h1>
+        </div>
+        <button class="header__menu-toggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__menu-item">
+              <a class="header__menu-link item__home-link" href="">Catálogo</a>
+            </li>
+            <li class="header__menu-item item__cart">
+              <a class="header__menu-link item__cart-link" href="">
+                <span class="item__span-cart"></span>Carrito</a
+              >
+            </li>
+            <li class="header__menu-item">
+              <a
+                class="header__menu-link"
+                href="/src/pages/admin/home/home.html"
+                >Panel Admin</a
+              >
+            </li>
+            <li class="header__menu-item">
+              <a class="header__menu-link logout" href="">Cerras sesión</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+        <aside class="main__categories">
+          <div class="main__container-text">
+            <h3 class="main__categories-title">Categorías</h3>
+            <p class="main__categories-subtitle">Filtrar por categorías</p>
+          </div>
+          <ul class="categories__list"></ul>
+        </aside>
+        <div class="main__container-form">
+          <form class="main__form-search">
+            <input
+              class="main__form-input"
+              id="search"
+              name="search"
+              type="text"
+              placeholder="🔍Buscar productos..."
+            />
+          </form>
+          <section class="main__products">
+            <h2 class="main__products-title"></h2>
+            <button class="main__button-cart">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  fill="#ff6347"
+                  d="M24-16C10.7-16 0-5.3 0 8S10.7 32 24 32l45.3 0c3.9 0 7.2 2.8 7.9 6.6l52.1 286.3c6.2 34.2 36 59.1 70.8 59.1L456 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-255.9 0c-11.6 0-21.5-8.3-23.6-19.7l-5.1-28.3 303.6 0c30.8 0 57.2-21.9 62.9-52.2L568.9 69.9C572.6 50.2 557.5 32 537.4 32l-412.7 0-.4-2c-4.8-26.6-28-46-55.1-46L24-16zM208 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm224 0a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                />
+              </svg>
+              <span class="main__button-cart-number">0</span>
+            </button>
+            <div class="main__products-list"></div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="footer__container-text">
+          <p class="footer__text">
+            © 2026 Food Store. Todos los derechos reservados.
+          </p>
+          <p class="footer__text">
+            Contacto: <a href="mailto:info@foodstore.com">info@foodstore.com</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

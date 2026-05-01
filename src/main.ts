@@ -1,60 +1,84 @@
-import './style.css'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.ts'
+import type { IUser } from "./types/IUser";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const initRouter = () => {
+  const publicRoutes = [
+    "/src/pages/auth/login/login.html",
+    "/src/pages/auth/registro/signup.html",
+  ];
+  const adminRoutes = ["/src/pages/admin/home/home.html"];
 
-<div class="ticks"></div>
+  const usersData = localStorage.getItem("users");
+  const users: IUser[] = usersData ? JSON.parse(usersData) : [];
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+  const isLoggedIn = localStorage.getItem("currentUser");
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+  const currentUser = users.find((u) => u.email === isLoggedIn);
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  const currentPath = window.location.pathname;
+
+  const isPublic = publicRoutes.includes(currentPath);
+  const isAdmin = adminRoutes.includes(currentPath);
+
+  //si el usuario intenta ingresar por la raíz por error o adrede, lo redirigue al home dependiendo del rol
+  if (currentPath === "/" || currentPath === "/index.html") {
+    if (!isLoggedIn) {
+      window.location.replace("/src/pages/auth/login/login.html");
+    } else {
+      const redirect =
+        currentUser?.role === "admin"
+          ? "/src/pages/admin/home/home.html"
+          : "/src/pages/store/home/home.html";
+      window.location.replace(redirect);
+    }
+  }
+
+  //si no esta logueado ingresa al login
+  if (!isLoggedIn && !isPublic) {
+    window.location.replace("/src/pages/auth/login/login.html");
+  }
+
+  //intenta ingresar a una ruta protegida para rol admin
+  if (isAdmin && currentUser?.role !== "admin") {
+    alert("No tienes permiso de ingresar al panel de admin.");
+    window.location.replace("/src/pages/store/home/home.html");
+  }
+};
+
+initRouter();
+
+const logoutEl = document.querySelector<HTMLAnchorElement>(".logout");
+
+logoutEl?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  localStorage.removeItem("currentUser");
+  window.location.replace("/src/pages/auth/login/login.html");
+});
+
+const homeLink = document.querySelector<HTMLAnchorElement>(".item__home-link");
+
+homeLink?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  window.location.replace("/src/pages/store/home/home.html");
+});
+
+const homeLinkCart = document.querySelector<HTMLAnchorElement>(".main__button");
+
+homeLinkCart?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  window.location.replace("/src/pages/store/home/home.html");
+});
+
+const cartLink = document.querySelector<HTMLAnchorElement>(".item__cart-link");
+
+cartLink?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  window.location.replace("/src/pages/store/cart/cart.html");
+});
+
+const cartButtonHome =
+  document.querySelector<HTMLButtonElement>(".main__button-cart");
+
+cartButtonHome?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  window.location.replace("/src/pages/store/cart/cart.html");
+});
