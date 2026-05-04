@@ -1,25 +1,32 @@
 import type { IUser } from "./types/IUser";
 
 const initRouter = () => {
+  //se declara las rutas publicas
   const publicRoutes = [
     "/src/pages/auth/login/login.html",
     "/src/pages/auth/registro/signup.html",
   ];
+  //rutas admin
   const adminRoutes = ["/src/pages/admin/home/home.html"];
 
+  //se recupera la lista users de localStorage
   const usersData = localStorage.getItem("users");
-  const users: IUser[] = usersData ? JSON.parse(usersData) : [];
 
+  const users: IUser[] = usersData ? JSON.parse(usersData) : [];
+  //se recupera el usuario logueado
   const isLoggedIn = localStorage.getItem("currentUser");
 
+  //se recupera los datos guardados del usuario logueado
   const currentUser = users.find((u) => u.email === isLoggedIn);
 
   const currentPath = window.location.pathname;
 
+  //se verifica si el path coincide con rutas publicas o de admin
   const isPublic = publicRoutes.includes(currentPath);
   const isAdmin = adminRoutes.includes(currentPath);
 
-  //si el usuario intenta ingresar por la raíz por error o adrede, lo redirigue al home dependiendo del rol
+  //si el usuario intenta ingresar por la raíz por error o adrede,
+  // lo redirigue al home dependiendo del rol
   if (currentPath === "/" || currentPath === "/index.html") {
     if (!isLoggedIn) {
       window.location.replace("/src/pages/auth/login/login.html");

@@ -220,5 +220,5 @@ const searchProducts = () => {
 addCategories(); //crea la lista de las categorias
 filterByCategory("all"); //se filtra por defecto todos los productos
 toggleMenu(); //prepara el menu movil
-searchProducts(); //perpara el buscador
+searchProducts(); //prepara el buscador
 renderNumberCart(); //muestra la cantidad de actual de items en el carrito

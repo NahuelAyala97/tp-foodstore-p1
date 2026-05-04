@@ -25,7 +25,6 @@ formEl?.addEventListener("submit", (e: SubmitEvent) => {
 });
 
 signupEl?.addEventListener("click", (e: MouseEvent) => {
-  console.log("ok");
   e.preventDefault();
   window.location.href = "/src/pages/auth/registro/signup.html";
 });
